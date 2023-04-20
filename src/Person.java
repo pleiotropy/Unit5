@@ -10,6 +10,12 @@ public class Person
         eMail = e;
     }
 
+    public Person(String f, String l) {
+        firstName = f;
+        lastName = l;
+        eMail = "None provided";
+    }
+
     // getter methods
     public String getFirstName() {
         return firstName;

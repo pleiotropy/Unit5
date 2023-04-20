@@ -8,6 +8,17 @@ public class Prism {
         width = w;
         height = h;
     }
+    public Prism(int s) {
+        length = s;
+        width = s;
+        height = s;
+    }
+    public Prism() {
+        int randomSide = (int) ((Math.random() * 90) + 10);
+        length = randomSide;
+        width = randomSide;
+        height = randomSide;
+    }
 
     // getter/setter methods
     public void setLength(int newLength) {
