@@ -1,27 +1,58 @@
 public class Main {
     public static void main(String[] args) {
-        // COPY/PASTE YOUR METHODS for (a) and (b)
-        // into the CoinGame class, then run this code
-        // to test your solutions
-        CoinGame game1 = new CoinGame(10, 5);
-        game1.playGame();  // should print: tie game
+        // Test Person class
+        Person p = new Person("Angela", "Joseph", "angela@example.com");
+        p.introduce();
+        System.out.println("First name: " + p.getFirstName());
+        System.out.println("Last name: " + p.getLastName());
+        System.out.println("E-Mail address: " + p.getEMail());
+        p.setNewEMail("angelajoseph@example.com");
+        System.out.println("New e-Mail address: " + p.getEMail());
 
-        CoinGame game2 = new CoinGame(10, 4);
-        game2.playGame(); // should print: tie game
+        // Test Prism class
+        Prism rp = new Prism(1,1,1);
+        System.out.println("The surface area is: " + rp.surfaceArea());
+        System.out.println("The volume is: " + rp.volume());
+        rp.setHeight(5);
+        rp.setLength(7);
+        rp.setWidth(9);
+        System.out.println("The surface area is: " + rp.surfaceArea());
+        System.out.println("The volume is: " + rp.volume());
 
-        CoinGame game3 = new CoinGame(10, 3);
-        game3.playGame(); // should print: player 1 wins
+        // Test Spinner class
+        Spinner s = new Spinner(10);
+        System.out.println("============================================");
+        System.out.println("Welcome to the Spinner Thing");
+        System.out.println("============================================");
 
-        CoinGame game4 = new CoinGame(10, 2);
-        game4.playGame(); // should print: player 2 wins
+        System.out.println("Spinning the spinner...");
+        s.spin();
+        System.out.println("Most recent spin: " + s.getMostRecentSpin());
+        System.out.println("Average spin: " + s.averageSpin());
+        System.out.println("============================================");
 
-        CoinGame game5 = new CoinGame(10, 6);
-        game5.playGame(); // should print: player 2 wins
+        System.out.println("Spinning the spinner...");
+        s.spin();
+        System.out.println("Most recent spin: " + s.getMostRecentSpin());
+        System.out.println("Average spin: " + s.averageSpin());
+        System.out.println("============================================");
 
-        CoinGame game6 = new CoinGame(5, 4);
-        game6.playGame(); // should print: player 2 wins
+        System.out.println("Spinning the spinner...");
+        s.spin();
+        System.out.println("Most recent spin: " + s.getMostRecentSpin());
+        System.out.println("Average spin: " + s.averageSpin());
+        System.out.println("============================================");
 
-        CoinGame game7 = new CoinGame(7, 4);
-        game7.playGame(); // should print: tie game
+        System.out.println("Spinning the spinner...");
+        s.spin();
+        System.out.println("Most recent spin: " + s.getMostRecentSpin());
+        System.out.println("Average spin: " + s.averageSpin());
+        System.out.println("============================================");
+
+        System.out.println("Spinning the spinner...");
+        s.spin();
+        System.out.println("Most recent spin: " + s.getMostRecentSpin());
+        System.out.println("Average spin: " + s.averageSpin());
+        System.out.println("============================================");
     }
 }
