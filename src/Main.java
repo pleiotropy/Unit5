@@ -98,7 +98,7 @@ public class Main
         System.out.println(dragon.getLevel());
         System.out.println(dragon.isDead());
          */
-        /* Test StepTracker */
+        /* Test StepTracker
         StepTracker tr = new StepTracker(10000);
         System.out.println(tr.activeDays());
         System.out.println(tr.averageSteps());
@@ -113,5 +113,82 @@ public class Main
         tr.addDailySteps(1111);
         System.out.println(tr.activeDays());
         System.out.println(tr.averageSteps());
+         */
+        /* U5L5 Test AdditionPattern
+        AdditionPattern plus3 = new AdditionPattern(2, 3);
+        System.out.println(plus3.currentNumber());
+        plus3.next();
+        System.out.println(plus3.currentNumber());
+        plus3.next();
+        plus3.next();
+        System.out.println(plus3.currentNumber());
+        plus3.prev();
+        plus3.prev();
+        plus3.prev();
+        System.out.println(plus3.currentNumber());
+        plus3.prev();
+        System.out.println(plus3.currentNumber());
+         */
+        /* U5L5 Test GameSpinner
+        GameSpinner g = new GameSpinner(4);
+        System.out.println("current run: " + g.currentRun());
+        System.out.println(g.spin());
+        System.out.println("current run: " + g.currentRun());
+        System.out.println(g.spin());
+        System.out.println("current run: " + g.currentRun());
+        System.out.println(g.spin());
+        System.out.println("current run: " + g.currentRun());
+        System.out.println(g.spin());
+        System.out.println("current run: " + g.currentRun());
+        System.out.println(g.spin());
+        System.out.println(g.spin());
+        System.out.println(g.spin());
+        System.out.println("current run: " + g.currentRun());
+         */
+        /* U5L5 Test Time */
+        Time time1 = new Time(8, 9, 58);
+        System.out.println(time1);
+        time1.tick();
+        System.out.println(time1);
+        time1.tick();
+        System.out.println(time1);
+        time1.tick();
+        System.out.println(time1);
+        time1.tick();
+        System.out.println(time1);
+        time1.tick();
+        time1.tick();
+        time1.tick();
+        time1.tick();
+        time1.tick();
+        time1.tick();
+        time1.tick();
+        time1.tick();
+        System.out.println(time1);
+        Time time2 = new Time(15, 59, 58);
+        System.out.println(time2);
+        time2.tick();
+        System.out.println(time2);
+        time2.tick();
+        System.out.println(time2);
+        time2.tick();
+        System.out.println(time2);
+        Time time3 = new Time(23, 59, 58);
+        System.out.println(time3);
+        time3.tick();
+        System.out.println(time3);
+        time3.tick();
+        System.out.println(time3);
+        time3.tick();
+        System.out.println(time3);
+        Time time4 = new Time(10, 14, 43);
+        System.out.println(time4);
+        Time time5 = new Time(8, 30, 29);
+        time4.add(time5);
+        System.out.println(time4);
+        System.out.println(time5);
+        Time time6 = new Time(7, 20, 0);
+        time4.add(time6);
+        System.out.println(time4);
     }
 }
