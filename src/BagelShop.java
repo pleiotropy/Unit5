@@ -45,7 +45,7 @@ public class BagelShop
      */
     public boolean payForBagels(CreditCard card, int quantity, String cardPIN)
     {
-        if (!card.checkPIN(cardPIN)) {
+        if (!card.checkPIN(cardPIN) || quantity > inventory) {
             return false;
         }
         else {
@@ -73,6 +73,7 @@ public class BagelShop
      */
     public boolean returnBagels(CreditCard card, int quantity, String cardPIN)
     {
+        // should not be able to return more bagels than you have bought
         if (!card.checkPIN(cardPIN)) {
             return false;
         }
@@ -102,6 +103,18 @@ public class BagelShop
 
         // omitting the bank instance variable from the String
         return str;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getProfit() {
+        return profit;
+    }
+
+    public int getInventory() {
+        return inventory;
     }
 }
 

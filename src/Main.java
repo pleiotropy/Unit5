@@ -1,110 +1,130 @@
+import java.util.Scanner;
 public class Main
 {
+    private static Scanner s = new Scanner(System.in);
+    private static String name;
+    private static Bank bank;
+    private static BagelShop shop;
+    private static CreditCard card1, card2;
+
     public static void main(String[] args)
     {
-        //New bank in town
-        Bank bank = new Bank();
-        System.out.println(bank + "\n");
+        // welcome the user
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("$ Welcome to the BankApp $");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$");
 
-        //Mr. Das is getting a new credit card!
-        CreditCard myCard = new CreditCard("Mr. Das", "9254");
-        System.out.println(myCard + "\n");
+        // Set up the user's CreditCard
+        setUpCreditCard();
+        // Set up the user's Bank
+        bank = new Bank();
+        // Set up the user's BagelShop
+        shop = new BagelShop(name + "'s Bagel Shop", 50, 2, bank);
+        // create new bankapp object with user's name
+        BankApp app = new BankApp(name,shop,card1,bank);
 
-        //Oh nice! A new bagel shop in town!
-        BagelShop jimsBagelShop = new BagelShop("Jim's Bagel Shop", 1000, 2, bank);
-        System.out.println(jimsBagelShop + "\n");
+        // Confirm the user's information
+        printConfirmationOfAccount(card1);
 
-        //Mr. Das wants to buy 5 bagels using his new credit card
-        boolean buyBagels = jimsBagelShop.payForBagels(myCard, 5, "9254");
-        System.out.println(buyBagels + "\n");
-        System.out.println(myCard + "\n");
-        System.out.println(jimsBagelShop + "\n");
+        // set user's menu choice to an initial value
+        int menuChoice = -1;
 
-        //He tried to buy 10 more, but accidentally entered his PIN wrong
-        buyBagels = jimsBagelShop.payForBagels(myCard, 10, "9354");
-        System.out.println(buyBagels + "\n");
-        System.out.println(myCard + "\n");
-        System.out.println(jimsBagelShop + "\n");
+        // Menu Option Logic
+        while (menuChoice != 0) {
+            // Print the menu and get user's menu choice
+            app.displayMenu();
+            System.out.print("Which option would you like to do?: ");
+            menuChoice = Integer.parseInt(s.nextLine());
 
-        //He fixed his typo!  Phew thank goodness
-        buyBagels = jimsBagelShop.payForBagels(myCard, 10, "9254");
-        System.out.println(buyBagels + "\n");
-        System.out.println(myCard + "\n");
-        System.out.println(jimsBagelShop + "\n");
+            // 1. Make a purchase or return at the bagel shop.
+            if (menuChoice == 1) {
+                System.out.print("Would you like to PURCHASE (P) or RETURN (R) a bagel?: ");
+                String t = s.nextLine();
+                app.transaction(t);
+                printConfirmationOfAccount(card1);
+            }
 
-        //Three of his bagels are moldy; he returns them for his money back
-        boolean returnBagels = jimsBagelShop.returnBagels(myCard, 3, "9254");
-        System.out.println(returnBagels + "\n");
-        System.out.println(myCard + "\n");
-        System.out.println(jimsBagelShop + "\n");
+            // 2. Make a payment on the credit card.
+            else if (menuChoice == 2) {
+                app.payCreditCard();
+            }
 
-        //Bill time!  Mr. Das pays off $15
-        bank.makePayment(myCard, 15);
-        System.out.println(myCard + "\n");
-        System.out.println(bank + "\n");
+            // 3. Open a second credit card.
+            else if (menuChoice == 3) {
+                card2 = app.openSecondCreditCard();
+                printConfirmationOfAccount(card2);
+            }
 
-        //John opens a new Credit Card
-        CreditCard johnsCard = new CreditCard("John", "1022");
-        System.out.println(johnsCard + "\n");
+            // 4. Compare credit card balances.
+            else if (menuChoice == 4) {
+                if (card1 != null && card2 != null) {
+                    CreditCard lowerBalance = app.compareCreditCardBalances(card1,card2);
+                    if (lowerBalance != null) {
+                        System.out.println(lowerBalance.getAccountHolder() + " has a lower balance.");
+                        System.out.println("The balance is: " + lowerBalance.getBalanceOwed());
+                    }
+                    else {
+                        System.out.println("The cards have the same balance (" + card1.getBalanceOwed() + ").");
+                    }
+                }
+                else {
+                    System.out.println("You do not have two credit cards to compare.");
+                }
+            }
 
-        //John is catering a large breakfast at a conference center
-        buyBagels = jimsBagelShop.payForBagels(johnsCard, 300, "1022");
-        System.out.println(buyBagels + "\n");
-        System.out.println(johnsCard + "\n");
-        System.out.println(jimsBagelShop + "\n");
+            // 5. Deposit profits into the bank.
+            else if (menuChoice == 5) {
+                app.depositProfitIntoBank();
+            }
 
-        //Yikes! That was expensive. John pays off $75 of his credit card balance
-        bank.makePayment(johnsCard, 75);
-        System.out.println(johnsCard + "\n");
-        System.out.println(bank + "\n");
+            // 6. Check inventory.
+            else if (menuChoice == 6) {
+                app.checkInventory();
+            }
 
-        //The bagel shop has a lot of money and wants to deposit the profits into the bank
-        jimsBagelShop.depositProfits();
-        System.out.println(jimsBagelShop + "\n");
-        System.out.println(bank + "\n");
-
-        //Let's see whose credit card balance is lower!
-        CreditCard lowestCard = bank.lowerBalance(myCard, johnsCard);
-        if (lowestCard != null)
-        {
-            System.out.println(lowestCard.getAccountHolder() + " with a $" + lowestCard.getBalanceOwed() + " balance\n");
-        }
-        else
-        {
-            System.out.println("They have the same balance\n");
-        }
-
-        //John pays off his card in full
-        bank.makePayment(johnsCard, johnsCard.getBalanceOwed());
-        System.out.println(johnsCard + "\n");
-        System.out.println(bank + "\n");
-
-        //Now let's check again:
-        lowestCard = bank.lowerBalance(myCard, johnsCard);
-        if (lowestCard != null)
-        {
-            System.out.println(lowestCard.getAccountHolder() + " with a $" + lowestCard.getBalanceOwed() + " balance\n");
-        }
-        else
-        {
-            System.out.println("They have the same balance\n");
+            // invalid menu choice
+            else {
+                if (menuChoice != 0) {
+                    System.out.println("Invalid menu choice. Enter a valid choice.");
+                }
+            }
         }
 
-        //Mr. Das pays off his card in full
-        bank.makePayment(myCard, myCard.getBalanceOwed());
-        System.out.println(myCard + "\n");
-        System.out.println(bank + "\n");
+        // when the program ends, say goodbye to the user
+        System.out.println("Thanks for using the BankApp. Good-Bye!");
+    }
 
-        //Now let's check one last time:
-        lowestCard = bank.lowerBalance(myCard, johnsCard);
-        if (lowestCard != null)
-        {
-            System.out.println(lowestCard.getAccountHolder() + " with a $" + lowestCard.getBalanceOwed() + " balance\n");
+    private static void setUpCreditCard() {
+        // get the user's name - CC.java
+        System.out.print("Please enter your name to create a new credit card account: ");
+        name = s.nextLine();
+
+        // set the user's pin - CC.java
+        System.out.println("You will need a 4-digit PIN to buy or return items purchased with your credit card.");
+        System.out.print("Please enter a PIN for your credit card: ");
+        String pin1 = s.nextLine();
+        String pin2 = "";
+        while (!pin1.equals(pin2)) {
+            System.out.print("Please enter your PIN again: ");
+            pin2 = s.nextLine();
         }
-        else
-        {
-            System.out.println("They have the same balance\n");
-        }
+
+        // create the CreditCard object
+        card1 = new CreditCard(name, pin1);
+    }
+    private static void printConfirmationOfAccount(CreditCard card) {
+        System.out.println("===============================================");
+        System.out.println("Congratulations! Your account has been created.");
+        System.out.println("===============================================");
+        System.out.println("Your Credit Card Info: ");
+        System.out.println(card.toString());
+        System.out.println("===============================================");
+        System.out.println("Your Bagel Shop Info: ");
+        System.out.println(shop.toString());
+        System.out.println("===============================================");
+        System.out.println("Your Bank Info: ");
+        System.out.println(bank);
+        System.out.println("===============================================");
+
     }
 }
-

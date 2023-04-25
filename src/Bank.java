@@ -72,5 +72,9 @@ public class Bank
         str += "\nVendor Account Balance: " + vendorAccountBalance;
         return str;
     }
+
+    public int getVendorAccountBalance() {
+        return vendorAccountBalance;
+    }
 }
 
