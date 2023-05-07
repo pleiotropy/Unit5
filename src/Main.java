@@ -1,81 +1,35 @@
-// This runner class is started for you; finish writing
-// the print statements in the helper method
-
 public class Main
 {
     public static void main(String[] args)
     {
-/*        Employee employee1 = new Employee("Jim", "Mason");
-        employeeTest(employee1);
+        LogMessage test1 = new LogMessage("CLIENT3:security alert - repeated login failures");
+        LogMessage test2 = new LogMessage("Webserver:disk offline");
+        LogMessage test3 = new LogMessage("SERVER1:file not found");
+        LogMessage test4 = new LogMessage("SERVER2:read error on disk DSK1");
+        LogMessage test5 = new LogMessage("SERVER1:write error on disk DSK2");
+        LogMessage test6 = new LogMessage("Webserver:error on /dev/disk");
+        LogMessage test7 = new LogMessage("7:disk");
+        LogMessage test8 = new LogMessage("8:error on disk");
+        LogMessage test9 = new LogMessage("9:error on /dev/disk disk");
+        LogMessage test10 = new LogMessage("10:error on disk DSK1");
+        LogMessage test11 = new LogMessage("11:DISK");
+        LogMessage test12 = new LogMessage("12:error on disk3");
+        LogMessage test13 = new LogMessage("13:error on /dev/disk");
+        LogMessage test14 = new LogMessage("14:diskette");
 
-        Employee employee2 = new Employee("Amy", "Adams");
-        employeeTest(employee2);
-
-        Employee employee3 = new Employee("Bob", "Ross");
-        employeeTest(employee3);
-
-        Employee employee4 = new Employee("Cindy", "Nox");
-        employeeTest(employee4);
-
-        System.out.println("==============================");
-        employeeTest(employee1);
-        employeeTest(employee2);
-        employeeTest(employee3);
-        employeeTest(employee4);
-    }
-
-    public static void employeeTest(Employee employee)
-    {
-        System.out.println("Employee's full name: " + employee.fullName());
-        // finish writing me:
-        System.out.println("Employee's ID number: " + employee.getId());
-        System.out.println("Most Recent Employee ID: " + Employee.getMostRecentIDAssigned());
-        System.out.println("Total Employees: " + Employee.getNumberOfEmployees());
-        System.out.println("-----");*/
-
-        Temperature temp1 = new Temperature(68.5, 56.7, "F");
-        tempTest(temp1);
-
-        Temperature temp2 = new Temperature(74.2, 60.5, "F");
-        tempTest(temp2);
-
-        Temperature temp3 = new Temperature(27.65, 10.5, "C");
-        tempTest(temp3);
-
-        Temperature temp4 = new Temperature(21.3, 9.8, "C");
-        tempTest(temp4);
-
-        Temperature temp5 = new Temperature(43.5, 29.8, "F");
-        tempTest(temp5);
-
-        Temperature temp6 = new Temperature(31.8, 30.2, "F");
-        tempTest(temp6);
-
-        Temperature temp7 = new Temperature(13.8, 2.4, "C");
-        tempTest(temp7);
-
-        Temperature temp8 = new Temperature(5.9, -3.65, "C");
-        tempTest(temp8);
-
-        // static variables maintain their current values
-        System.out.println("==============================");
-        tempTest(temp1);
-    }
-
-    public static void tempTest(Temperature temp)
-    {
-        // FINISH ME!
-        // use instance method getters
-        System.out.println("High temp: " + temp.getHighTemp());
-        System.out.println("Low temp: " + temp.getLowTemp());
-        System.out.println("Scale: " + temp.getTempScale());
-        System.out.println("Below freezing? " + temp.belowFreezing());
-
-        // use static method getters
-        System.out.println("Highest tracked temp (F): " + Temperature.getHighestTrackedTempF());
-        System.out.println("Lowest tracked temp (F): " + Temperature.getLowestTrackedTempF());
-        System.out.println("Ever saw freezing?: " + Temperature.sawFreezing());
-        System.out.println("-----------");
-
+        System.out.println("1: " + test1.containsWord("disk"));
+        System.out.println("2: " + test2.containsWord("disk"));
+        System.out.println("3: " + test3.containsWord("disk"));
+        System.out.println("4: " + test4.containsWord("disk"));
+        System.out.println("5: " + test5.containsWord("disk"));
+        System.out.println("6: " + test6.containsWord("disk"));
+        System.out.println("7: " + test7.containsWord("disk"));
+        System.out.println("8: " + test8.containsWord("disk"));
+        System.out.println("9: " + test9.containsWord("disk"));
+        System.out.println("10: " + test10.containsWord("disk"));
+        System.out.println("11: " + test11.containsWord("disk"));
+        System.out.println("12: " + test12.containsWord("disk"));
+        System.out.println("13: " + test13.containsWord("disk"));
+        System.out.println("14: " + test14.containsWord("disk"));
     }
 }
