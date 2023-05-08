@@ -2,56 +2,28 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Fraction frac1 = new Fraction(7, 8);
-        System.out.println(frac1);
-
-        Fraction frac2 = new Fraction(6);
-        System.out.println(frac2);
-
-        Fraction frac3 = new Fraction();
-        System.out.println(frac3);
-
-        Fraction frac4 = new Fraction(2, 4);
-        Fraction frac5 = frac4.multiplyWithFraction(frac1);
-        System.out.println(frac5);
-        System.out.println(frac1);
-
-        Fraction frac6 = new Fraction(9, 14);
-        frac6.flip();
-        System.out.println(frac6);
-
-        System.out.println("----");
-
-        // watch the references!
-        Fraction frac7 = new Fraction(3, 4);
-        Fraction bigger = frac7.largerFraction(frac4);
-        System.out.println(bigger);
-        bigger.flip();
-        System.out.println(frac7);
-
-        Fraction frac8 = new Fraction(2);
-        bigger = frac7.largerFraction(frac8);
-        System.out.println(bigger);
-        bigger.flip();
-        System.out.println(frac8);
-
-        System.out.println("----");
-
-        Fraction frac9 = new Fraction(1, 2);
-        Fraction frac10 = new Fraction(2, 3);
-
-        double productAsDouble = Fraction.multiplyFractions(frac9, frac10).asDecimal();
-        System.out.println(productAsDouble);
-
-        System.out.println("----");
-        Fraction largest = frac1.largerFraction(frac2).largerFraction(frac3).largerFraction(frac4);
-        System.out.println(largest);
-
-        System.out.println("----");
-        double srslyWTFdoesThisDo =
-                Fraction.multiplyFractions(frac9, (frac9.largerFraction(frac10).multiplyWithFraction(new Fraction(6, 4)).largerFraction(frac9))).asDecimal();
-
-        System.out.println(srslyWTFdoesThisDo);
-
+        Soil s = new Soil (10, 3);
+        System.out.println(s.treatmentsNeeded());
+        System.out.println(s.isDangerous());
+        s.treat(7);
+        System.out.println(s.treatmentsNeeded());
+        s.treat(11);
+        System.out.println(s.treatmentsNeeded());
+        s.treat(10);
+        System.out.println(s.treatmentsNeeded());
+        System.out.println(s.isDangerous());
+        s.treat(8);
+        s.treat(4);
+        System.out.println(s.treatmentsNeeded());
+        System.out.println(s.isDangerous());
+        s.treat(4);
+        System.out.println(s.treatmentsNeeded());
+        System.out.println(s.isDangerous());
+        s.treat(11);
+        System.out.println(s.treatmentsNeeded());
+        System.out.println(s.isDangerous());
+        s.treat(12);
+        System.out.println(s.treatmentsNeeded());
+        System.out.println(s.isDangerous());
     }
 }
